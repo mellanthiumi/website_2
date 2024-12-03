@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique - Возврат товаров</title>
+    <link rel="stylesheet" href="html/css/main.css">
+    <link rel="stylesheet" href="html/css/header.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .main-background {
+            min-height: 100vh;
+            width: 100%;
+            background: linear-gradient(100deg, rgba(198,46,46,1) 39%, rgba(0,0,0,1) 100%);
+            padding: 20px;
+        }
+
+        .page-container {
+            min-height: 100vh;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: white;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 4px;
+        }
+
+        select option {
+            background: rgba(198,46,46,1);
+            color: white;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            padding: 10px 20px;
+            margin: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: white;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            margin: 10px 0;
+        }
+
+        .radio-item,
+        .checkbox-item {
+            margin: 5px 0;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        small {
+            display: block;
+            margin-top: 5px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-title {
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .navbar-nav .nav-link,
+        h2, h3 {
+            color: white !important;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            font-weight: 100;
+            transition: opacity 0.3s ease;
+        }
+        
+        .navbar-brand {
+            color: white !important;
+            font-family: 'Mrs Saint Delafield', cursive;
+            font-size: 50px;
+            transition: opacity 0.3s ease;
+            margin-right: 2rem;
+        }
+        
+        .dropdown-item {
+            color: white !important;
+            font-family: 'Roboto', sans-serif;
+            font-size: 13px;
+            font-weight: 100;
+            transition: opacity 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover,
+        .dropdown-item:hover,
+        .navbar-brand:hover {
+            opacity: 0.8;
+        }
+        
+        .dropdown-menu {
+            background-color: rgba(0, 0, 0);
+            padding: 4px 0;
+        }
+
+        .navbar-collapse {
+            justify-content: center;
+        }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+
+        .nav-item {
+            text-align: center;
+            white-space: nowrap;
+            flex: 0 1 auto;
+        }
+
+        .navbar > .container-fluid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .dropdown-toggle::after {
+            display: none !important;
+        }
+
+        .nav-item.dropdown .nav-link {
+            color: white !important;
+        }
+
+        .nav-item.dropdown:last-child {
+            margin-left: 2rem;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .navbar-brand.logo {
+                font-size: 40px;
+            }
+            
+            .form-container {
+                padding: 1rem;
+            }
+            
+            .form-group {
+                margin-bottom: 1rem;
+            }
+            
+            .input-field {
+                margin-bottom: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .navbar-brand.logo {
+                font-size: 30px;
+            }
+            
+            .form-container {
+                width: 100%;
+                max-width: none;
+            }
+            
+            .input-group {
+                flex-direction: column;
+            }
+            
+            .input-group .input-field {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Mobile menu styles */
+        @media (max-width: 991.98px) {
+            .navbar {
+                position: relative;
+            }
+
+            .navbar-collapse {
+                background-color: rgba(0, 0, 0, 0.95) !important;
+                margin-top: 0.3rem;
+                padding: 0.2rem 0 !important;
+                position: absolute;
+                width: 100%;
+                z-index: 1000;
+                left: 0;
+                top: 100%;
+                border-radius: 12px !important;
+                overflow: hidden !important;
+            }
+
+            .navbar-collapse.show {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            }
+
+            .navbar-toggler {
+                border: none !important;
+                padding: 0 !important;
+                margin-left: 1.5rem !important;
+                transition: transform 0.3s ease;
+                transform: scale(1.1);
+            }
+
+            .navbar-toggler:hover {
+                transform: scale(1.2);
+            }
+
+            .navbar-toggler-icon {
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+                width: 1.6em;
+                height: 1.6em;
+            }
+
+            .navbar-nav {
+                margin-left: -1rem !important;
+                padding: 0.5rem 0 !important;
+                gap: 0 !important;
+            }
+
+            .nav-item {
+                text-align: left;
+                width: 100%;
+                padding: 0.1rem 0 !important;
+            }
+
+            .nav-link {
+                transition: all 0.3s ease;
+                position: relative;
+                padding: 0.15rem 1rem !important;
+                font-size: 0.8rem !important;
+            }
+
+            .nav-link:hover {
+                opacity: 0.8;
+                transform: translateX(10px);
+                background-color: transparent !important;
+            }
+
+            .dropdown-menu {
+                float: none;
+                position: static !important;
+                width: 100%;
+                background-color: transparent !important;
+                border: none;
+                margin: 0;
+                padding: 0.3rem 0 !important;
+            }
+
+            .dropdown-menu.show {
+                display: block;
+                margin-left: 0;
+            }
+
+            .dropdown-item {
+                color: white !important;
+                padding: 0.15rem 1.5rem !important;
+                margin-left: 0 !important;
+                transition: all 0.3s ease;
+                position: relative;
+                font-size: 0.75rem !important;
+            }
+
+            .dropdown-item:hover {
+                opacity: 0.8;
+                transform: translateX(10px);
+                background-color: transparent !important;
+            }
+
+            .nav-item.dropdown:last-child {
+                margin-left: 0 !important;
+            }
+
+            .nav-item.dropdown:last-child .nav-link {
+                padding: 0.1rem 1.5rem !important;
+            }
+
+            .dropdown-toggle::after {
+                float: right;
+                margin-top: 8px;
+            }
+
+            main {
+                margin-top: 1rem;
+            }
+            
+            .nav-item.dropdown:last-child {
+                margin-left: 0 !important;
+            }
+            
+            .nav-item.dropdown:last-child .nav-link {
+                padding: 0.1rem 1.5rem !important;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .nav-link, .dropdown-toggle, .dropdown-item {
+                padding: 0.5rem 1.5rem !important;
+                margin: 0 !important;
+                width: 100% !important;
+                text-align: left !important;
+            }
+
+            .dropdown-menu {
+                width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                background-color: transparent !important;
+                border: none !important;
+            }
+
+            .nav-item.dropdown:last-child {
+                margin: 0 !important;
+            }
+
+            .nav-item.dropdown:last-child .nav-link {
+                padding: 0.5rem 1.5rem !important;
+            }
+
+            .nav-item.dropdown:last-child .dropdown-item {
+                padding: 0.5rem 1.5rem !important;
+            }
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 0.5rem !important;
+            margin-bottom: 0.5rem !important;
+        }
+
+        .navbar-nav {
+            padding-left: 1.5rem !important;
+        }
+
+        .nav-link, .dropdown-toggle {
+            padding: 0.5rem 1rem !important;
+            margin: 0 !important;
+            text-align: left !important;
+        }
+
+        .dropdown-menu {
+            padding: 0.3rem 0 !important;
+            margin: 0 !important;
+            width: auto !important;
+            min-width: max-content !important;
+        }
+
+        .dropdown-item {
+            padding: 0.5rem 1.5rem !important;
+            margin: 0 !important;
+            white-space: nowrap !important;
+            text-align: left !important;
+        }
+
+        .navbar-collapse {
+            padding: 0.3rem 0 !important;
+            text-align: left !important;
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-nav {
+                flex-direction: column !important;
+                width: 100% !important;
+                padding-left: 1.5rem !important;
+                gap: 0 !important;
+            }
+
+            .nav-item {
+                text-align: left;
+                width: 100%;
+                margin: 0 !important;
+            }
+
+            .nav-item.dropdown:last-child {
+                margin: 0 !important;
+            }
+
+            .nav-item.dropdown:last-child .nav-link {
+                padding: 0.15rem 1rem !important;
+                margin: 0 !important;
+            }
+
+            .nav-link {
+                padding: 0.15rem 1rem !important;
+                margin: 0 !important;
+                text-align: left !important;
+            }
+
+            .dropdown-menu {
+                padding: 0 !important;
+                margin: 0 !important;
+                background-color: transparent !important;
+                border: none !important;
+            }
+
+            .dropdown-item {
+                padding: 0.15rem 2.5rem !important;
+                margin: 0 !important;
+                text-align: left !important;
+            }
+
+            .nav-item.dropdown:last-child .dropdown-item {
+                padding: 0.15rem 2.5rem !important;
+            }
+        }
+        
+        /* Active navigation highlight */
+        .nav-link.active {
+            position: relative;
+            color: #FFD700 !important;
+        }
+
+        /* User icon active state */
+        .nav-link.active img {
+            filter: brightness(0) saturate(100%) invert(85%) sepia(40%) saturate(800%) hue-rotate(359deg) brightness(105%) contrast(101%);
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <header class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand logo" href="index.html">Boutique</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">О нас</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="index.html#history">История</a></li>
+                                    <li><a class="dropdown-item" href="index.html#team">Команда</a></li>
+                                    <li><a class="dropdown-item" href="index.html#contacts">Контакты</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="catalogue.html">Скидки</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="catalogue.html#new">Одежда</a></li>
+                                    <li><a class="dropdown-item" href="catalogue.html#clothes">Обувь</a></li>
+                                    <li><a class="dropdown-item" href="catalogue.html#accessories">Аксессуары</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="clothes.html">Каталог</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="feedback.html">Оставить отзыв</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Официальные дистрибьюторы</a>
+                                <ol class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="https://www.lamoda.ru/women-home/" target="_blank">Lamoda</a></li>
+                                    <li><a class="dropdown-item" href="https://www.asos.com/" target="_blank">ASOS</a></li>
+                                    <li><a class="dropdown-item" href="https://www.endclothing.com/ie" target="_blank">END.</a></li>
+                                    <li><a class="dropdown-item" href="https://peakstore.ru/" target="_blank">Peak Store</a></li>
+                                </ol>
+                            </li>
+                        </ul>
+                        <div class="nav-item dropdown">
+                            <a class="nav-link active" href="#">
+                                <img width="17px" height="17px" src="html/images/icons8-пользователь-без-половых-признаков-48.png" alt="User">
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="form1.html">Личный кабинет</a></li>
+                                <li><a class="dropdown-item" href="form2.html">Возврат товаров</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container form-page">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6">
+                    <div class="form-container">
+                        <h3 class="form-title">Форма для возврата товаров</h3>
+                        <form action="https://www.bing.com/search?" id="UserEnter" name="UserEnter" target="_blank">
+                            <input type="hidden" name="q" value="search">
+                            <p>Личные данные:</p>
+                            <div class="name-group">
+                                <div class="input-field">
+                                    <input type="text" name="first_name" required value="Анна">
+                                </div>
+                                <div class="input-field">
+                                    <input type="text" name="last_name" required value="Иванова">
+                                </div>
+                            </div>
+                            <p>
+                                Электронная почта:
+                                <input type="email" name="email" required value="anna.ivanova@mail.ru">
+                                <small>Пожалуйста, укажите почту, с которой был сделан заказ.</small>
+                            </p>
+                            <p>
+                                Номер заказа:
+                                <input type="text" name="order_number" required value="ORDER123456">
+                            </p>
+                            <p>
+                              Дата покупки:
+                                <input type="date" name="purchase_date" required value="2024-01-15">
+                            </p>
+                            <p>
+                                Описание товара:
+                                <input type="text" name="product_description" required value="Платье вечернее черное, размер M">
+                            </p>
+                            <p>
+                                Количество товара:
+                                <input type="number" name="quantity" min="1" required value="1">
+                            </p>
+                            <p>
+                                Состояние товара:
+                                <select name="product_condition" required>
+                                    <option value="new" selected>Новый (не использовался)</option>
+                                    <option value="used">Использованный</option>
+                                    <option value="damaged">Поврежденный</option>
+                                </select>
+                            </p>
+                            <p>
+                                Причина возврата:
+                                <select name="return_reason" id="return_reason" required onchange="toggleOtherReason(this)">
+                                    <option value="size" selected>Не подошел размер</option>
+                                    <option value="quality">Проблема с качеством</option>
+                                    <option value="different">Товар отличается от фото</option>
+                                    <option value="other">Другое</option>
+                                </select>
+                            </p>
+                            <p id="otherReasonField" style="display: none;">
+                                Опишите причину возврата:
+                                <textarea name="other_reason" rows="4"></textarea>
+                            </p>
+                            <p>
+                                Требуемое действие:
+                                <select name="required_action" required>
+                                    <option value="refund" selected>Возврат денег</option>
+                                    <option value="exchange">Замена товара</option>
+                                    <option value="repair">Ремонт</option>
+                                </select>
+                            </p>
+                            <p>
+                                Способ возврата:
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" id="courier" name="return_method" value="courier" required checked>
+                                        <label for="courier">Курьером</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="post" name="return_method" value="post">
+                                        <label for="post">Почтой России</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="pickup" name="return_method" value="pickup">
+                                        <label for="pickup">Пунктом самовывоза</label>
+                                    </div>
+                                </div>
+                            </p>
+                            <p>
+                                Дополнительные опции:
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="notify" name="preferences" value="notify" checked>
+                                        <label for="notify">Уведомлять о статусе возврата по SMS</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="refund_card" name="preferences" value="refund_card" checked>
+                                        <label for="refund_card">Возврат на ту же карту оплаты</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="express" name="preferences" value="express">
+                                        <label for="express">Ускоренная обработка возврата</label>
+                                    </div>
+                                </div>
+                            </p>
+
+                            <input type="hidden" name="function" value="page">
+                            <input type="hidden" name="page_id" value="4">
+
+                            <p>
+                                <input type="submit" name="submit" value="Отправить">
+                                <input type="reset" value="Очистить форму">
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleOtherReason(selectElement) {
+            var otherField = document.getElementById('otherReasonField');
+            if (selectElement.value === 'other') {
+                otherField.style.display = 'block';
+            } else {
+                otherField.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,663 @@
+@import url('https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Roboto:wght@100;300;400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(100deg, rgba(198,46,46,1) 39%, rgba(0,0,0,1) 100%) fixed;
+    background-size: cover;
+    min-height: 100%;
+    color: #fff;
+    line-height: 1.6;
+}
+
+.wrapper {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.first-screen {
+    position: relative;
+    padding-top: 20px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header and Navigation */
+header.container {
+    position: relative;
+    z-index: 100;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.navbar {
+    position: relative;
+    width: 100%;
+}
+
+.navbar-collapse {
+    justify-content: center;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.nav-item {
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Headings */
+h2, h3 {
+    margin: 2rem 0;
+    text-align: center;
+    font-weight: 300;
+    color: white;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-top: 4rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+}
+
+/* Content Sections */
+.hero {
+    text-align: center;
+    padding-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.hero--info {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.hero--info p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin: 2rem 0;
+}
+
+/* Links */
+a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+a:hover {
+    opacity: 0.8;
+    color: white;
+}
+
+/* Forms */
+.form-container {
+    max-width: 600px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+/* Collections Section */
+.collections-section {
+    padding: 4rem 0;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Header and Navigation */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    gap: 60px;
+}
+
+nav ul li.current-page > a {
+    color: #ffeb3b;
+    font-weight: bold;
+    position: relative;
+}
+
+nav ul li.current-page > a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ffeb3b;
+}
+
+.logo {
+    font-family: 'Mrs Saint Delafield', cursive;
+    font-size: 48px;
+    color: white;
+    text-decoration: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: 0.3s ease;
+    flex-shrink: 0;
+}
+
+nav {
+    flex: 1;
+}
+
+nav > ul {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline-block;
+    position: relative;
+    margin-right: 20px;
+    white-space: nowrap;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    white-space: nowrap;
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    transition: 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Dropdown Menus */
+.submenu,
+.distributor-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 4px;
+    padding: 6px;
+    min-width: 120px;
+    margin-top: 3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: 0.3s ease;
+    z-index: 100;
+}
+.submenu {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 5px 0;
+}
+
+.submenu li {
+    width: 100%;
+    padding: 2px 15px;
+    margin: 0;        /* removes any margin */
+    line-height: 1;   /* reduces line height */
+}
+
+.submenu li a {
+    display: block;
+    white-space: nowrap;
+    padding: 2px 0;
+}
+ul li a:hover {
+    background-color: rgba(194, 39, 39, 0.886);  /* Same as your ordered list */
+    color: #ffffff;  /* Text color on hover */
+}
+ol {
+    padding-left: 20px;  /* reduces left padding where numbers appear */
+    margin: 0;           /* removes default margins */
+    line-height: 0.5;    /* reduces space between lines */
+}
+
+ol li {
+    padding: 2px 0;      /* minimal padding around list items */
+    margin: 0;           /* removes default margins between items */
+}
+/* If you want to style the bullet points too */
+ul li::marker {
+    color: #832424;  /* Same color as your ordered list numbers */
+}
+
+/* Base styles for the list items */
+ul li {
+    padding: 1px 0;
+    margin: 0;
+}
+
+ul li a {
+    display: block;
+    padding: 4px 6px;
+    border-radius: 3px;
+    transition: 0.3s ease;
+}
+nav ul li:hover .submenu,
+nav ul li:hover .distributor-list {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.submenu li,
+.distributor-list li {
+    margin: 2px 0;
+    white-space: nowrap;
+    font-size: 11px;
+}
+
+.submenu li a,
+.distributor-list li a {
+    color:#000 ;
+    text-transform: none;
+    font-size: 15px;
+    padding: 4px 6px;
+    border-radius: 3px;
+    display: block;
+    transition: 0.3s ease;
+}
+
+.submenu li a:hover,
+.distributor-list li a:hover {
+    background-color: rgba(194, 39, 39, 0.886);
+    color: #ffffff;
+}
+nav ul li a:hover {
+    background-color: rgba(221, 207, 207, 0.5);
+    color:#000;
+}
+
+.user-menu {
+    position: relative;
+    display: inline-block;
+    margin-left: -10px !important;
+}
+
+.user-menu img {
+    vertical-align: middle;
+    display: inline-block;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.user-menu:hover img {
+    opacity: 1;
+}
+
+.dropdown-menu {
+    margin-top: 0;
+    display: none;
+    min-width: 200px;
+    position: absolute;
+    background-color: white;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 0.25rem;
+    padding: 0.5rem 0;
+}
+
+.nav-item.dropdown:hover .dropdown-menu,
+.user-menu:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li {
+    display: block;
+    width: 100%;
+}
+
+.dropdown-menu .dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    clear: both;
+    text-align: left;
+    color: #000;
+    text-decoration: none;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: rgba(194, 39, 39, 0.886);
+    color: #ffffff;
+}
+
+/* Position the user menu dropdown on the right */
+.nav-item.dropdown:last-child .dropdown-menu {
+    left: auto;
+    right: 0;
+}
+
+/* Hero Section */
+.hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.hero h2 {
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 100;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.hero h3 {
+    font-family: 'Mrs Saint Delafield', cursive;
+    font-size: 72px;
+    color: rgb(75, 8, 8);
+    margin-bottom: 20px;
+}
+
+.hero h3 a {
+    color: inherit;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.hero h3 a:hover {
+    color: rgb(121, 13, 13);
+}
+
+.hero p {
+    font-size: 20px;
+    font-weight: 100;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 1px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.arrow-down {
+    display: inline-block;
+    cursor: pointer;
+    padding: 20px;
+}
+
+.arrow-down span {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transform: rotate(45deg);
+    margin: -10px;
+    animation: animate 2s infinite;
+}
+
+.arrow-down span:nth-child(2) {
+    animation-delay: -0.2s;
+}
+
+.arrow-down span:nth-child(3) {
+    animation-delay: -0.4s;
+}
+
+@keyframes animate {
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) translate(-20px, -20px);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) translate(20px, 20px);
+    }
+}
+
+/* Collections Table */
+.collections-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.collections-section h2 {
+    font-family: 'Mrs Saint Delafield', cursive;
+    font-size: 70px;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.collections-section h2 a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.collections-section h2 a:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#collections a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#collections a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.table-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    background: url('../images/ornament.png') no-repeat center center;
+    background-size: cover;
+    padding: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.collections-table {
+    width: 100%;
+    border-collapse: collapse;
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    table-layout: fixed;
+}
+
+.collections-table th,
+.collections-table td {
+    width: 33.33%;
+}
+
+.collections-table th {
+    background: rgb(75, 8, 8);
+    color: white;
+    padding: 15px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.collections-table td {
+    padding: 12px 15px;
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    text-align: center;
+    background: none;
+}
+.collections-table td a {
+    text-decoration: none;  /* removes underline */
+    color: inherit;        /* keeps the same color as parent */
+}
+
+.collections-table tbody tr:hover td {
+    background: rgb(75, 8, 8);
+}
+
+.collections-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Table Styles */
+td.px-4.text-center {
+    color: #000000;
+    padding: 1rem;
+}
+
+/* Active page highlighting */
+nav ul li.active.current-page a {
+    opacity: 1;
+}
+
+/* Radio and Checkbox styling */
+.radio-group, .checkbox-group {
+    margin: 10px 0;
+}
+
+.radio-item, .checkbox-item {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.radio-item input[type="radio"],
+.checkbox-item input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.radio-item label,
+.checkbox-item label {
+    display: inline-block;
+    margin: 0;
+    line-height: 1.2;
+    font-size: 14px;
+    color: #4A0404;  /* darker burgundy color */
+}
+
+/* Placeholder styling */
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+    color: #e0e0e0;
+    opacity: 1;
+}
+
+/* For Internet Explorer */
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder,
+select:-ms-input-placeholder {
+    color: #e0e0e0;
+}
+
+/* For Microsoft Edge */
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder,
+select::-ms-input-placeholder {
+    color: #e0e0e0;
+}
+
+/* Distributor List Specific */
+.distributor-list {
+    right: 0;
+    left: auto;
+    min-width: 160px;
+    counter-reset: dist-counter;
+}
+
+.distributor-list li {
+    counter-increment: dist-counter;
+    display: flex;
+    align-items: center;
+}
+
+.distributor-list li::before {
+    content: counter(dist-counter) ".";
+    font-size: 11px;
+    color: #832424;
+    margin-right: 4px;
+    min-width: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .container-fluid {
+        padding: 0 1rem;
+}
+
+    h2 {
+        font-size: 2rem;
+        margin-top: 3rem;
+}
+
+    h3 {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+}
+
+    .hero {
+        padding-top: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero--info {
+        padding: 1rem;
+}
+
+    .hero--info p {
+        font-size: 1rem;
+    }
+}

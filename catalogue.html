@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique - Скидки</title>
+    <link rel="stylesheet" href="html/css/main.css">
+    <link rel="stylesheet" href="html/css/header.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar-nav .nav-link,
+        h2, h3 {
+            color: white !important;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            font-weight: 100;
+            transition: opacity 0.3s ease;
+        }
+        
+        .navbar-brand {
+            color: white !important;
+            font-family: 'Mrs Saint Delafield', cursive;
+            font-size: 50px;
+            transition: opacity 0.3s ease;
+            margin-right: 2rem;
+        }
+        
+        .dropdown-item {
+            color: white !important;
+            font-family: 'Roboto', sans-serif;
+            font-size: 13px;
+            font-weight: 100;
+            transition: opacity 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover,
+        .dropdown-item:hover,
+        .navbar-brand:hover {
+            opacity: 0.8;
+        }
+        
+        .dropdown-menu {
+            background-color: rgba(0, 0, 0);
+            padding: 4px 0;
+        }
+
+        .navbar-collapse {
+            justify-content: center;
+        }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-item {
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .navbar > .container-fluid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Remove dropdown arrows */
+        .dropdown-toggle::after {
+            display: none !important;
+        }
+
+        .nav-item.dropdown .nav-link {
+            color: white !important;
+            padding-right: 0.5rem !important;
+        }
+
+        .nav-item.dropdown:last-child {
+            margin-left: 2rem;
+        }
+
+        .table-section {
+            padding: 60px 0;
+        }
+        .availability-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 300;
+        }
+        .table-section h2 {
+            font-family: 'Mrs Saint Delafield', cursive;
+            font-size: 3.5rem;
+        }
+
+        /* Mobile menu styles */
+        @media (max-width: 991.98px) {
+            .navbar {
+                position: relative;
+            }
+
+            .navbar-brand {
+                font-size: 40px;
+            }
+
+            .navbar-collapse {
+                background-color: rgba(0, 0, 0, 0.95) !important;
+                margin-top: 0.3rem;
+                padding: 0.2rem 0 !important;
+                position: absolute;
+                width: 100%;
+                z-index: 1000;
+                left: 0;
+                top: 100%;
+                border-radius: 12px !important;
+                overflow: hidden !important;
+            }
+
+            .navbar-collapse.show {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .catalogue-section {
+            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .navbar-toggler {
+            border: none !important;
+            padding: 0 !important;
+            margin-left: 1.5rem !important;
+            transition: transform 0.3s ease;
+            transform: scale(1.1);
+        }
+
+        .navbar-toggler:hover {
+            transform: scale(1.2);
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+            width: 1.6em;
+            height: 1.6em;
+        }
+
+        .navbar-nav {
+            margin-left: -1rem !important;
+        }
+
+        .nav-item {
+            text-align: left;
+            width: 100%;
+        }
+
+        .nav-link {
+            transition: all 0.3s ease;
+            position: relative;
+                padding-left: 0 !important;
+                font-size: 0.8rem !important;
+                padding: 0.15rem 1rem !important;
+            }
+
+            .nav-link:hover {
+                opacity: 0.8;
+                transform: translateX(10px);
+                background-color: transparent !important;
+        }
+
+        .dropdown-menu {
+            float: none;
+            position: static !important;
+            width: 100%;
+            background-color: transparent !important;
+            border: none;
+            margin: 0;
+                padding: 0.15rem 0 !important;
+                transform: none !important;
+            }
+
+            .dropdown-menu.show {
+                display: block;
+                margin-left: 0;
+        }
+
+        .dropdown-item {
+            color: white !important;
+                padding: 1.5rem 1.5rem !important;
+                margin: 0 !important;
+                transition: all 0.3s ease;
+                position: relative;
+                font-size: 0.75rem !important;
+                text-align: left !important;
+            }
+
+            .dropdown-item:hover {
+                opacity: 0.8;
+                transform: translateX(10px);
+                background-color: transparent !important;
+            }
+
+            main {
+                margin-top: 1rem;
+        }
+
+        .nav-item.dropdown:last-child {
+            margin-left: 0 !important;
+        }
+        
+        .nav-item.dropdown:last-child .nav-link {
+            padding-left: 1.5rem !important;
+        }
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 0.5rem !important;
+            margin-bottom: 0.5rem !important;
+        }
+
+        .navbar-nav {
+            padding-left: 1.5rem !important;
+        }
+
+        .nav-link, .dropdown-toggle {
+            padding: 0.5rem 1rem !important;
+            margin: 0 !important;
+            text-align: left !important;
+        }
+
+        .dropdown-menu {
+            padding: 0.3rem 0 !important;
+            margin: 0 !important;
+            width: auto !important;
+            min-width: max-content !important;
+        }
+
+        .dropdown-item {
+            padding: 0.5rem 1.5rem !important;
+            margin: 0 !important;
+            white-space: nowrap !important;
+            text-align: left !important;
+        }
+
+        .navbar-collapse {
+            padding: 0.3rem 0 !important;
+            text-align: left !important;
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-nav {
+                flex-direction: column !important;
+                width: 100% !important;
+                padding-left: 1.5rem !important;
+                gap: 0 !important;
+            }
+
+            .nav-item {
+                text-align: left;
+                width: 100%;
+                padding: 0.15rem 0 !important;
+            }
+
+            .nav-link {
+                padding: 0.15rem 1rem !important;
+                font-size: 0.8rem !important;
+            }
+
+            .dropdown-menu {
+                padding: 0.15rem 0 !important;
+                margin: 0 !important;
+                background-color: transparent !important;
+                border: none !important;
+            }
+
+            .dropdown-item {
+                padding: 0.15rem 1rem !important;
+                font-size: 0.75rem !important;
+            }
+
+            .nav-item.dropdown:last-child {
+                margin-left: 0 !important;
+            }
+
+            .nav-item.dropdown:last-child .nav-link {
+                padding: 0.15rem 1rem !important;
+            }
+
+            .nav-item.dropdown:last-child .dropdown-menu {
+                padding: 0.15rem 0 !important;
+            }
+
+            .nav-item.dropdown:last-child .dropdown-item {
+                padding: 0.15rem 1rem !important;
+            }
+        }
+        
+        /* Active page highlight */
+        .nav-link.active {
+            color: #FFD700 !important;
+            position: relative;
+            font-weight: 400;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #FFD700, transparent);
+            opacity: 0.8;
+        }
+
+        @media (max-width: 991.98px) {
+            .nav-link.active::after {
+                bottom: 5px;
+            }
+        }
+        
+        /* Table styles */
+        .table-custom {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 0 auto;
+            max-width: 100%;
+            border-collapse: collapse;
+            border-style: hidden;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .table-custom thead {
+            border: none;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .table-custom th {
+            background: rgb(75, 8, 8);
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 12px 8px;
+            font-size: 13px;
+        }
+
+        .table-custom td {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+        }
+        
+        .item-cell img {
+            width: 180px;
+            height: 240px;
+            object-fit: contain;
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+        }
+        
+        .item-cell img:hover {
+            transform: scale(1.05);
+        }
+        
+        .table-custom tr {
+            border: none !important;
+        }
+
+        .table-custom tbody {
+            border: none !important;
+        }
+
+        @media (max-width: 991.98px) {
+            .table-custom {
+                font-size: 14px;
+            }
+            
+            .item-cell img {
+                width: 140px;
+                height: 180px;
+            }
+            
+            .table-custom th,
+            .table-custom td {
+                padding: 8px 6px;
+            }
+        }
+        
+        @media (max-width: 767.98px) {
+            .table-custom {
+                font-size: 13px;
+            }
+            
+            .item-cell img {
+                width: 120px;
+                height: 160px;
+            }
+            
+            .table-custom th,
+            .table-custom td {
+                padding: 6px 4px;
+            }
+        }
+        
+        @media (max-width: 575.98px) {
+            .table-custom {
+                font-size: 12px;
+            }
+            
+            .item-cell img {
+                width: 100px;
+                height: 140px;
+            }
+            
+            .table-custom th,
+            .table-custom td {
+                padding: 4px 3px;
+            }
+            
+            .table-responsive {
+                margin: 0 -10px;
+                padding: 0 10px;
+                width: calc(100% + 20px);
+            }
+        }
+        
+        /* Compact table styles for mobile */
+        @media screen and (max-width: 390px) {
+            .table-section {
+                padding: 20px 5px;
+            }
+            
+            .table-section h2 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .table-custom {
+                table-layout: fixed;
+                font-size: 11px;
+            }
+
+            .table-custom td,
+            .table-custom th {
+                padding: 8px 4px;
+            }
+
+            .table-custom th {
+                font-size: 10px;
+                font-weight: 500;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .table-custom td:first-child {
+                width: 30%;
+            }
+
+            .item-cell {
+                width: 25%;
+            }
+
+            .item-cell img {
+                width: 70px;
+                height: auto;
+            }
+
+            .availability-badge {
+                padding: 3px 6px;
+                font-size: 10px;
+            }
+
+            td.price-cell {
+                width: 20%;
+                font-size: 11px;
+            }
+        }
+        
+        /* Remove Bootstrap's default table borders */
+        .table {
+            border: none !important;
+            border-collapse: collapse !important;
+        }
+        
+        .table td,
+        .table th {
+            border: none !important;
+            border-right: none !important;
+            border-left: none !important;
+            border-spacing: 0 !important;
+        }
+        
+        .table thead th {
+            border: none !important;
+            border-bottom: none !important;
+        }
+        
+        .table tbody td {
+            border: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-background"></div>
+    <div class="wrapper">
+        <div class="first-screen">
+            <header class="container">
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                    <div class="container-fluid">
+                        <a class="navbar-brand logo" href="index.html">Boutique</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#">О нас</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="index.html#history">История</a></li>
+                                        <li><a class="dropdown-item" href="index.html#team">Команда</a></li>
+                                        <li><a class="dropdown-item" href="index.html#contacts">Контакты</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link active" href="catalogue.html" style="color: #FFD700 !important;">Скидки</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="catalogue.html#new">Одежда</a></li>
+                                        <li><a class="dropdown-item" href="catalogue.html#clothes">Обувь</a></li>
+                                        <li><a class="dropdown-item" href="catalogue.html#accessories">Аксессуары</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="clothes.html">Каталог</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="feedback.html">Оставить отзыв</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Официальные дистрибьюторы</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="https://www.lamoda.ru/women-home/" target="_blank">Lamoda</a></li>
+                                        <li><a class="dropdown-item" href="https://www.asos.com/" target="_blank">ASOS</a></li>
+                                        <li><a class="dropdown-item" href="https://www.endclothing.com/ie" target="_blank">END.</a></li>
+                                        <li><a class="dropdown-item" href="https://peakstore.ru/" target="_blank">Peak Store</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#">
+                                        <img width="17px" height="17px" src="html/images/icons8-пользователь-без-половых-признаков-48.png" alt="User">
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="form1.html">Личный кабинет</a></li>
+                                        <li><a class="dropdown-item" href="form2.html">Возврат товаров</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="container catalogue-section">
+                <div id="table-section" class="table-section">
+                            <h2 class="text-center text-white mb-4">Our Catalogue</h2>
+                    <div class="table-responsive">
+                                <table class="table table-custom table-hover align-middle">
+                                    <thead>
+                                        <!-- Заголовки таблицы -->
+                                        <tr>
+                                            <th class="px-4 text-center">Description</th>
+                                            <th class="text-center">Item</th>
+                                            <th class="px-4 text-center">Price</th>
+                                            <th class="px-4 text-center">Availability</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Строка 1 -->
+                                        <tr>
+                                            <td class="px-4 text-center">Parisian Nights</td>
+                                            <td class="item-cell text-center">
+                                                <img src="html/images/bomber.webp" alt="Bomber" title="Bomber">
+                                            </td>
+                                            <td class="px-4 text-center"><del>€6000</del> €3500</td>
+                                            <td class="px-4 text-center">
+                                                <span class="availability-badge bg-success text-white">In&nbsp;Stock</span>
+                                            </td>
+                                        </tr>
+                                        <!-- Строка 2 -->
+                                        <tr>
+                                            <td class="px-4 text-center">Mediterranean Summer</td>
+                                            <td class="item-cell text-center">
+                                                <img src="html/images/dress.webp" alt="Dress" title="Dress">
+                                            </td>
+                                            <td class="px-4 text-center"><del>€1500</del> €800</td>
+                                            <td class="px-4 text-center">
+                                                <span class="availability-badge bg-warning text-dark">2 Left</span>
+                                            </td>
+                                        </tr>
+                                        <!-- Строка 3 -->
+                                        <tr>
+                                            <td class="px-4 text-center">Urban Chic</td>
+                                            <td class="item-cell text-center">
+                                                <img src="html/images/jeans.webp" alt="Jeans" title="Jeans">
+                                            </td>
+                                            <td class="px-4 text-center"><del>€2100</del> €1200</td>
+                                            <td class="px-4 text-center">
+                                                <span class="availability-badge bg-danger text-white">Limited</span>
+                                            </td>
+                                        </tr>
+                                        <!-- Строка 4 -->
+                                        <tr>
+                                            <td class="px-4 text-center">Evening Elegance</td>
+                                            <td class="item-cell text-center">
+                                                <img src="html/images/boot.jpg" alt="Boot" title="Boots">
+                                            </td>
+                                            <td class="px-4 text-center"><del>€3000</del> €2500</td>
+                                            <td class="px-4 text-center">
+                                                <span class="availability-badge bg-success text-white">In&nbsp;Stock</span>
+                                            </td>
+                                        </tr>
+                                        <!-- Строка 5-->
+                                        <tr>
+                                            <td class="px-4 text-center">Casual outfit</td>
+                                            <td class="item-cell text-center">
+                                                <img src="html/images/sweater.WEBP" alt="Sweater" title="Sweater">
+                                            </td>
+                                            <td class="px-4 text-center"><del>€1500</del> €1250</td>
+                                            <td class="px-4 text-center">
+                                                <span class="availability-badge bg-danger text-white">On&nbsp;Sale</span>
+                                            </td>
+                                        </tr>
+                                        <!-- Строка 6 -->
+                                        <tr>
+                                            <td class="px-4 text-center">For special occasions</td>
+                                            <td class="item-cell text-center">
+                                                <img src="html/images/trousers.WEBP" alt="Trousers" title="Trousers">
+                                            </td>
+                                            <td class="px-4 text-center"><del>€2600</del> €2100</td>
+                                            <td class="px-4 text-center">
+                                                <span class="availability-badge bg-success text-white">In&nbsp;Stock</span>
+                                            </td>
+                                        </tr>
+                                        <!-- Строка 7 -->
+                                        <tr>
+                                            <td class="px-4 text-center">Unique Design</td>
+                                            <td class="item-cell text-center">
+                                                <img src="html/images/bag.JPG" alt="Bag" title="Bag">
+                                            </td>
+                                            <td class="px-4 text-center"><del>€6300</del> €5500</td>
+                                            <td class="px-4 text-center">
+                                                <span class="availability-badge bg-warning text-white">Exclusive</span>
+                                            </td>
+                                        </tr>
+                                        <!-- Строка 8-->
+                                        <tr>
+                                            <td class="px-4 text-center">Comfort & Style</td>
+                                            <td class="item-cell text-center">
+                                                <img src="html/images/leggings.WEBP" alt="Leggings" title="Leggings">
+                                            </td>
+                                            <td class="px-4 text-center"><del>€2000</del> €1800</td>
+                                            <td class="px-4 text-center">
+                                                <span class="availability-badge bg-danger text-white">On&nbsp;Sale</span>
+                                            </td>
+                                        </tr>
+                                        <!-- Строка 9 -->
+                                        <tr>
+                                            <td class="px-4 text-center">Rock & Roll</td>
+                                            <td class="item-cell text-center">
+                                                <img src="html/images/bomber_green.WEBP" alt="Bomber Green" title="Bomber Green">
+                                            </td>
+                                            <td class="px-4 text-center"><del>€6000</del> €2800</td>
+                                            <td class="px-4 text-center">
+                                                <span class="availability-badge bg-success text-white">XS</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

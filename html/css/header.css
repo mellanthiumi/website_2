@@ -1,0 +1,114 @@
+.navbar-nav .nav-link,
+.dropdown-item,
+h2, h3 {
+    color: white !important;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 100;
+    transition: opacity 0.3s ease;
+}
+
+.navbar {
+    padding: 0;
+    height: 50px;
+    background: transparent;
+    position: relative;
+}
+
+.navbar-brand.logo {
+    color: white !important;
+    font-family: 'Mrs Saint Delafield', cursive;
+    font-size: 50px;
+    transition: opacity 0.3s ease;
+    margin-right: 2rem;
+    line-height: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-nav .nav-link {
+    line-height: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+.navbar-collapse {
+    justify-content: center;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    text-align: center;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar > .container-fluid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 4px 0;
+    margin-top: 0;
+    border: none;
+}
+
+.dropdown-item {
+    color: white !important;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 100;
+    transition: opacity 0.3s ease;
+    padding: 0.5rem 1rem;
+}
+
+.navbar-nav .nav-link:hover,
+.dropdown-item:hover,
+.navbar-brand:hover {
+    opacity: 0.8;
+}
+
+/* User icon container */
+.nav-item.dropdown:last-child {
+    margin-left: 2rem;
+}
+
+.dropdown:hover > .dropdown-menu {
+    display: block;
+}
+
+.dropdown > .dropdown-toggle:active {
+    pointer-events: none;
+}
+
+.nav-item.dropdown:hover .nav-link {
+    opacity: 0.8;
+}
+
+/* Make all dropdown toggles white */
+.dropdown-toggle::after {
+    border-top-color: white !important;
+    color: white !important;
+}
+
+/* Style for the user icon dropdown */
+.nav-item.dropdown .nav-link {
+    color: white !important;
+}

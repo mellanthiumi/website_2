@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique - Личный кабинет</title>
+    <link rel="stylesheet" href="html/css/main.css">
+    <link rel="stylesheet" href="html/css/header.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar-nav .nav-link,
+        h2, h3 {
+            color: white !important;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            font-weight: 100;
+            transition: opacity 0.3s ease;
+        }
+        
+        .navbar-brand {
+            color: white !important;
+            font-family: 'Mrs Saint Delafield', cursive;
+            font-size: 50px;
+            transition: opacity 0.3s ease;
+            margin-right: 2rem;
+        }
+        
+        .dropdown-item {
+            color: white !important;
+            font-family: 'Roboto', sans-serif;
+            font-size: 13px;
+            font-weight: 100;
+            transition: opacity 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover,
+        .dropdown-item:hover,
+        .navbar-brand:hover {
+            opacity: 0.8;
+        }
+        
+        .dropdown-menu {
+            background-color: rgba(0, 0, 0);
+            padding: 4px 0;
+        }
+
+        .navbar-collapse {
+            justify-content: center;
+        }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+
+        .nav-item {
+            text-align: center;
+            white-space: nowrap;
+            flex: 0 1 auto;
+        }
+
+        .navbar > .container-fluid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .dropdown-toggle::after {
+            display: none !important;
+        }
+
+        .nav-item.dropdown .nav-link {
+            color: white !important;
+        }
+
+        .nav-item.dropdown:last-child {
+            margin-left: 2rem;
+        }
+
+        .main-background {
+            min-height: 100vh;
+            width: 100%;
+            background: linear-gradient(100deg, rgba(198,46,46,1) 39%, rgba(0,0,0,1) 100%);
+            padding: 20px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-title {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .input-field {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        label {
+            color: white;
+            margin-bottom: 8px;
+            display: block;
+            font-size: 14px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .name-group {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .name-group .input-field {
+            flex: 1;
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar {
+                position: relative;
+            }
+
+            .navbar-collapse {
+                background-color: rgba(0, 0, 0, 0.95) !important;
+                margin-top: 0.3rem;
+                padding: 0.2rem 0 !important;
+                position: absolute;
+                width: 100%;
+                z-index: 1000;
+                left: 0;
+                top: 100%;
+                border-radius: 12px !important;
+                overflow: hidden !important;
+            }
+
+            .navbar-collapse.show {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            }
+
+            .catalogue-section {
+                margin-top: 2rem;
+                position: relative;
+                z-index: 1;
+            }
+
+            .navbar-toggler {
+                border: none !important;
+                padding: 0 !important;
+                margin-left: 1.5rem !important;
+                transition: transform 0.3s ease;
+                transform: scale(1.1);
+            }
+
+            .navbar-toggler:hover {
+                transform: scale(1.2);
+            }
+
+            .navbar-toggler-icon {
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+                width: 1.6em;
+                height: 1.6em;
+            }
+
+            .navbar-nav {
+                margin-left: -1rem !important;
+                padding: 0.5rem 0 !important;
+                gap: 0 !important;
+            }
+
+            .nav-item {
+                text-align: left;
+                width: 100%;
+                padding: 0.1rem 0 !important;
+            }
+
+            .nav-link {
+                transition: all 0.3s ease;
+                position: relative;
+                padding: 0.15rem 1rem !important;
+                margin: 0 !important;
+                text-align: left !important;
+                font-size: 0.8rem !important;
+            }
+
+            .nav-link:hover {
+                opacity: 0.8;
+                transform: translateX(10px);
+                background-color: transparent !important;
+            }
+
+            .dropdown-menu {
+                float: none;
+                position: static !important;
+                width: 100%;
+                background-color: transparent !important;
+                border: none;
+                margin: 0;
+                padding: 0.3rem 0 !important;
+                transform: none !important;
+            }
+
+            .dropdown-menu.show {
+                display: block;
+                margin-left: 0;
+            }
+
+            .dropdown-item {
+                color: white !important;
+                padding: 0.15rem 1.5rem !important;
+                margin: 0 !important;
+                transition: all 0.3s ease;
+                position: relative;
+                font-size: 0.75rem !important;
+                text-align: left !important;
+            }
+
+            .dropdown-item:hover {
+                opacity: 0.8;
+                transform: translateX(10px);
+                background-color: transparent !important;
+            }
+
+            .nav-item.dropdown:last-child {
+                margin-left: 0 !important;
+            }
+
+            .nav-item.dropdown:last-child .nav-link {
+                padding: 0.15rem 1rem !important;
+            }
+
+            .dropdown-toggle::after {
+                float: right;
+                margin-top: 8px;
+            }
+
+            main {
+                margin-top: 1rem;
+            }
+            
+            .nav-item.dropdown:last-child {
+                margin-left: 0 !important;
+            }
+            
+            .nav-item.dropdown:last-child .nav-link {
+                padding-left: 1.5rem !important;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-nav {
+                flex-direction: column !important;
+                width: 100% !important;
+                padding-left: 1.5rem !important;
+            }
+
+            .nav-item {
+                text-align: left;
+                width: 100%;
+                padding: 0.15rem 0 !important;
+            }
+
+            .nav-link {
+                padding: 0.15rem 1rem !important;
+                font-size: 0.8rem !important;
+            }
+
+            .dropdown-menu {
+                padding: 0.15rem 0 !important;
+                margin: 0 !important;
+                background-color: transparent !important;
+                border: none !important;
+            }
+
+            .dropdown-item {
+                padding: 0.15rem 1rem !important;
+                font-size: 0.75rem !important;
+            }
+
+            .nav-item.dropdown:last-child .nav-link {
+                padding: 0.15rem 1rem !important;
+            }
+
+            .nav-item.dropdown:last-child .dropdown-menu {
+                padding: 0.15rem 0 !important;
+            }
+
+            .nav-item.dropdown:last-child .dropdown-item {
+                padding: 0.15rem 1rem !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 40px;
+            }
+            
+            .form-container {
+                padding: 1rem;
+            }
+            
+            .form-group {
+                margin-bottom: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .navbar-brand {
+                font-size: 30px;
+            }
+            
+            .name-group {
+                flex-direction: column;
+            }
+            
+            .name-group .input-field {
+                margin-bottom: 1rem;
+            }
+            
+            .form-container {
+                width: 100%;
+                max-width: none;
+            }
+        }
+
+        /* Active page highlight */
+        .nav-link.active {
+            position: relative;
+            color: #FFD700 !important;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #FFD700, transparent);
+            opacity: 0.8;
+        }
+
+        .nav-link.active img {
+            filter: brightness(0) saturate(100%) invert(85%) sepia(40%) saturate(800%) hue-rotate(359deg) brightness(105%) contrast(101%);
+        }
+
+        @media (max-width: 991.98px) {
+            .nav-link.active::after {
+                bottom: 5px;
+            }
+        }
+
+        /* User icon highlight */
+        .user-icon.active {
+            position: relative;
+        }
+
+        .user-icon.active img {
+            filter: brightness(0) saturate(100%) invert(85%) sepia(40%) saturate(800%) hue-rotate(359deg) brightness(105%) contrast(101%);
+        }
+
+        .user-icon.active::after {
+            display: none;
+        }
+
+        @media (max-width: 991.98px) {
+            .user-icon.active::after {
+                display: none;
+            }
+        }
+
+        /* User icon highlight for active pages */
+        .nav-item.dropdown .nav-link.active img {
+            filter: brightness(0) saturate(100%) invert(83%) sepia(72%) saturate(401%) hue-rotate(359deg) brightness(107%) contrast(107%);
+            opacity: 0.9;
+        }
+
+        .nav-item.dropdown .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #FFD700, transparent);
+            opacity: 0.8;
+        }
+
+        @media (max-width: 991.98px) {
+            .nav-item.dropdown .nav-link.active::after {
+                bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body class="form-page">
+    <div class="main-background">
+        <div class="wrapper">
+            <header class="container">
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="index.html">Boutique</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#">О нас</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="index.html#history">История</a></li>
+                                        <li><a class="dropdown-item" href="index.html#team">Команда</a></li>
+                                        <li><a class="dropdown-item" href="index.html#contacts">Контакты</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="catalogue.html">Скидки</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="catalogue.html#new">Одежда</a></li>
+                                        <li><a class="dropdown-item" href="catalogue.html#clothes">Обувь</a></li>
+                                        <li><a class="dropdown-item" href="catalogue.html#accessories">Аксессуары</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="clothes.html">Каталог</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="feedback.html">Оставить отзыв</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#">Официальные дистрибьюторы</a>
+                                    <ol class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="https://www.lamoda.ru/women-home/" target="_blank">Lamoda</a></li>
+                                        <li><a class="dropdown-item" href="https://www.asos.com/" target="_blank">ASOS</a></li>
+                                        <li><a class="dropdown-item" href="https://www.endclothing.com/ie" target="_blank">END.</a></li>
+                                        <li><a class="dropdown-item" href="https://peakstore.ru/" target="_blank">Peak Store</a></li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <div class="nav-item dropdown">
+                                <a class="nav-link active user-icon" href="#">
+                                    <img width="17px" height="17px" src="html/images/icons8-пользователь-без-половых-признаков-48.png" alt="User">
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="form1.html">Личный кабинет</a></li>
+                                    <li><a class="dropdown-item" href="form2.html">Возврат товаров</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-8 col-lg-6">
+                        <form class="form-container" action="https://www.bing.com/search?" id="UserEnter" name="UserEnter" target="_blank">
+                            <h3 class="form-title">Вход в личный кабинет</h3>
+                            
+                            <div class="name-group">
+                                <div class="input-field">
+                                    <label for="last_name">Фамилия</label>
+                                    <input type="text" id="last_name" name="last_name" required value="Иванова">
+                                </div>
+                                <div class="input-field">
+                                    <label for="first_name">Имя</label>
+                                    <input type="text" id="first_name" name="first_name" required value="Анна">
+                                </div>
+                            </div>
+
+                            <div class="input-field">
+                                <label for="email">Электронная почта</label>
+                                <input type="email" id="email" name="email" required value="anna.ivanova@mail.ru">
+                            </div>
+
+                            <div class="input-field">
+                                <label for="phone">Телефон</label>
+                                <input type="tel" id="phone" name="phone" required value="+7 (925) 123-45-67">
+                            </div>
+
+                            <div class="input-field">
+                                <label for="password">Пароль</label>
+                                <input type="password" id="password" name="password" required value="mySecurePassword123">
+                            </div>
+
+                            <input type="hidden" name="function" value="page">
+                            <input type="hidden" name="page_id" value="3">
+                            <input type="hidden" name="q" value="search">
+
+                            <button type="submit" class="submit-btn">Войти</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

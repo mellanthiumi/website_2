@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique</title>
+    <link rel="stylesheet" href="html/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar-nav .nav-link,
+        h2, h3 {
+            color: white !important;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            font-weight: 100;
+            transition: opacity 0.3s ease;
+        }
+        
+        .navbar-brand {
+            color: white !important;
+            font-family: 'Mrs Saint Delafield', cursive;
+            font-size: 50px;
+            transition: opacity 0.3s ease;
+            margin-right: 2rem;
+        }
+        
+        .dropdown-item {
+            color: white !important;
+            font-family: 'Roboto', sans-serif;
+            font-size: 13px;
+            font-weight: 100;
+            transition: opacity 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover,
+        .dropdown-item:hover,
+        .navbar-brand:hover {
+            opacity: 0.8;
+        }
+        
+        .dropdown-menu {
+            background-color: rgba(0, 0, 0);
+            padding: 4px 0;
+        }
+
+        .navbar-collapse {
+            justify-content: center;
+        }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-evenly;
+        }
+
+        .nav-item {
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .navbar > .container-fluid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .dropdown-toggle::after {
+            border-top-color: white !important;
+            color: white !important;
+        }
+
+        @media (min-width: 992px) {
+            .dropdown-toggle::after {
+                display: none;
+            }
+            .dropdown-menu {
+                margin-top: 0;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: all 0.3s ease;
+                display: block;
+            }
+
+            .nav-item.dropdown:hover .dropdown-menu {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+        }
+
+        .nav-item.dropdown .nav-link {
+            color: white !important;
+        }
+
+        .nav-item.dropdown:last-child {
+            margin-left: 0;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 500;
+        }
+        
+        h3 {
+            font-size: 2rem;
+            font-weight: 200;
+            color: white !important;
+        }
+        
+        @media (max-width: 991.98px) {
+            .navbar-brand {
+                font-size: 40px;
+            }
+            
+            h3 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 767.98px) {
+            .navbar-brand {
+                font-size: 32px;
+            }
+            
+            .navbar-nav {
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            
+            .nav-item.dropdown:last-child {
+                margin-left: 0;
+            }
+            
+            .container-fluid {
+                padding: 0 1rem;
+            }
+            
+            .image-container img {
+                max-width: 100%;
+                height: auto;
+            }
+            
+            .collections-table {
+                min-width: 500px;
+            }
+            
+            .collections-table th,
+            .collections-table td {
+                padding: 6px;
+                font-size: 0.9rem;
+            }
+            
+            .collections-table img {
+                width: 30px;
+                height: 30px;
+            }
+            
+            h3 {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 575.98px) {
+            .navbar-brand {
+                font-size: 34px;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+            
+            h3 {
+                font-size: 1.3rem;
+                font-weight: 200;
+            }
+            
+            .hero--info h3 {
+                font-size: 2rem;
+                font-weight: 100;
+            }
+            
+            .collections-table {
+                min-width: 300px;
+                font-size: 0.75rem;
+            }
+            
+            .collections-table th,
+            .collections-table td {
+                padding: 3px;
+            }
+            
+            .collections-table img {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .table-container {
+                margin: 0.5rem -8px;
+                padding: 0 8px;
+            }
+        }
+
+        /* Table styles */
+        .collections-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px auto;
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .collections-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin: 0 auto;
+        }
+        
+        .collections-table th,
+        .collections-table td {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px;
+            text-align: center;
+            color: white;
+        }
+        
+        .collections-table th {
+            background-color: rgba(0, 0, 0, 0.5);
+            font-weight: normal;
+        }
+        
+        .collections-table tr:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        
+        .collections-table tr:nth-child(odd) {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        
+        .collections-table tr:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .collections-table a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .collections-table a:hover {
+            opacity: 0.8;
+        }
+        
+        .collections-table img {
+            vertical-align: middle;
+            transition: transform 0.3s ease;
+        }
+        
+        .collections-table img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive table styles */
+        @media (max-width: 991.98px) {
+            .collections-table th,
+            .collections-table td {
+                padding: 8px;
+            }
+            .collections-table img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        @media (max-width: 767.98px) {
+            .collections-table {
+                font-size: 0.9rem;
+            }
+            .collections-table th,
+            .collections-table td {
+                padding: 6px;
+            }
+            .collections-table img {
+                width: 30px;
+                height: 30px;
+            }
+        }
+        
+        @media (max-width: 575.98px) {
+            .collections-table {
+                font-size: 0.8rem;
+            }
+            .collections-table th,
+            .collections-table td {
+                padding: 4px;
+            }
+            .collections-table img {
+                width: 25px;
+                height: 25px;
+            }
+            .table-container {
+                margin: 0.5rem -10px;
+                padding: 0 10px;
+            }
+        }
+
+        /* Enhanced mobile navigation */
+        @media (max-width: 991.98px) {
+            .navbar-toggler {
+                border-color: rgba(255,255,255,0.5) !important;
+            }
+            
+            .navbar-toggler-icon {
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+            }
+            
+            .navbar-collapse {
+                background-color: rgba(0, 0, 0, 0.95);
+                padding: 1rem;
+                border-radius: 8px;
+                margin-top: 0.5rem;
+            }
+        }
+
+        /* Mobile menu styles */
+        @media (max-width: 991.98px) {
+            .navbar-toggler {
+                border: none !important;
+                padding: 0;
+                margin-left: 0;
+            }
+
+            .navbar-collapse {
+                max-height: 50vh;
+                overflow-y: auto;
+            }
+
+            .navbar-nav {
+                align-items: flex-start;
+                padding: 0.25rem 0;
+                margin: 0;
+            }
+
+            .nav-item {
+                width: 100%;
+                text-align: left;
+                padding: 0.15rem 0;
+                line-height: 1;
+            }
+
+            .nav-link {
+                padding: 0.15rem 0.25rem !important;
+                font-size: 12px;
+                line-height: 1;
+            }
+
+            .dropdown-toggle::after {
+                display: none;
+            }
+
+            .dropdown-menu {
+                background-color: transparent;
+                border: none;
+                padding-left: 0.75rem;
+                padding-top: 0;
+                padding-bottom: 0;
+                margin: 0;
+                min-width: auto;
+            }
+
+            .dropdown-item {
+                padding: 0.15rem 0.25rem;
+                font-size: 11px;
+                line-height: 1;
+            }
+
+            .navbar-brand {
+                font-size: 40px;
+            }
+        }
+
+        /* Specific adjustments for mobile only */
+        @media (max-width: 575.98px) {
+            .navbar-brand {
+                font-size: 35px;
+            }
+
+            .navbar-collapse {
+                max-height: 35vh;
+                width: 50%;
+                margin-left: auto;
+                padding: 0.5rem 1rem;
+            }
+            
+            .nav-link {
+                font-size: 11px;
+                padding: 0.15rem 0.25rem !important;
+            }
+
+            .dropdown-item {
+                font-size: 10px;
+            }
+
+            .nav-item.dropdown img {
+                vertical-align: text-top;
+                margin-top: 1px;
+            }
+
+            .nav-link img {
+                margin: 0;
+                padding: 0;
+            }
+
+            .nav-item.dropdown a.nav-link {
+                padding: 0.15rem 0.25rem !important;
+                line-height: inherit;
+            }
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 500;
+        }
+        
+        .collections-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+        }
+        
+        .collections-table th, .collections-table td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+        }
+        
+        .collections-table th {
+            background-color: rgba(198, 46, 46, 0.8);
+            font-weight: 400;
+        }
+        
+        .collections-table tr:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .collections-table img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .collections-table a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .collections-table a:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="first-screen">
+            <header class="container">
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                    <div class="container-fluid">
+                        <a class="navbar-brand logo" href="index.html">Boutique</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#">О нас</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="index.html#history">История</a></li>
+                                        <li><a class="dropdown-item" href="index.html#team">Команда</a></li>
+                                        <li><a class="dropdown-item" href="index.html#contacts">Контакты</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="catalogue.html">Скидки</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="catalogue.html#new">Одежда</a></li>
+                                        <li><a class="dropdown-item" href="catalogue.html#clothes">Обувь</a></li>
+                                        <li><a class="dropdown-item" href="catalogue.html#accessories">Аксессуары</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="clothes.html">Каталог</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="feedback.html">Оставить отзыв</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#">Официальные дистрибьюторы</a>
+                                    <ol class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="https://www.lamoda.ru/women-home/" target="_blank">Lamoda</a></li>
+                                        <li><a class="dropdown-item" href="https://www.asos.com/" target="_blank">ASOS</a></li>
+                                        <li><a class="dropdown-item" href="https://www.endclothing.com/ie" target="_blank">END.</a></li>
+                                        <li><a class="dropdown-item" href="https://peakstore.ru/" target="_blank">Peak Store</a></li>
+                                    </ol>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#">
+                                        <img width="17px" height="17px" src="html/images/icons8-пользователь-без-половых-признаков-48.png" alt="User">
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="form1.html">Личный кабинет</a></li>
+                                        <li><a class="dropdown-item" href="form2.html">Возврат товаров</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="hero container">
+                <div class="hero--info">
+                    <h2 id='head2'>Parisian style</h2>
+                    <h3><a href="#coat">For a better you, today & always</a></h3>
+                    <p style="text-align: center;">Discover a world where fashion is more than just clothing<br>—it's a statement, an identity, and a way to express your uniqueness.</p>
+                    <div class="image-container">
+                        <a href="#head2">
+                            <img src="html/images/coat.png" id="coat" style="max-width: 500px; width: 100%; height: auto;" alt="Fashion Coat Image" title="coat" />
+                        </a>
+                    </div>
+                </div>
+                <div class="scroll-indicator">
+                    <div class="arrow-down">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="collections-section container">
+            <h2 id="our-collections" class="text-center"><a href="#head2">Our Collections</a></h2>
+            <div class="table-container">
+                <div class="table-responsive">
+                    <table class="collections-table">
+                        <thead>
+                            <tr>
+                                <th>Collection<br><img width="50px" height="50px" src="html/images/dresS.png"></th>
+                                <th>Season<br><img width="50px" height="50px" src="html/images/sun.png"></th>
+                                <th>Style<br><a href='html/images/star_copy.png' target="_blank"><img width="50px" height="50px" src="html/images/star.png"></a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href='catalogue.html'>Parisian Nights</a>
+                                </td>
+                                <td>Winter 2024</td>
+                                <td>Evening Wear</td>
+                            </tr>
+                            <tr>
+                                <td>Mediterranean Summer</td>
+                                <td>Summer 2024</td>
+                                <td>Resort Wear</td>
+                            </tr>
+                            <tr>
+                                <td>Urban Chic</td>
+                                <td>Spring 2024</td>
+                                <td>Casual Luxury</td>
+                            </tr>
+                            <tr>
+                                <td>Evening Elegance</td>
+                                <td>Fall 2024</td>
+                                <td>Formal Wear</td>
+                            </tr>
+                            <tr>
+                                <td>Modern Minimalist</td>
+                                <td>Spring 2023</td>
+                                <td>Contemporary</td>
+                            </tr>
+                            <tr>
+                                <td>Bohemian Dreams</td>
+                                <td>Summer 2023</td>
+                                <td>Boho-Chic</td>
+                            </tr>
+                            <tr>
+                                <td>Nordic Essence</td>
+                                <td>Winter 2023</td>
+                                <td>Scandinavian</td>
+                            </tr>
+                            <tr>
+                                <td>Tokyo Fusion</td>
+                                <td>Fall 2023</td>
+                                <td>Avant-Garde</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

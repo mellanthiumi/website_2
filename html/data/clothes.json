@@ -1,0 +1,52 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Elegant Evening Dress",
+      "description": "Вечернее платье из шелка",
+      "price": 15900,
+      "image": "",
+      "category": "dresses"
+    },
+    {
+      "id": 2,
+      "name": "Classic Trousers",
+      "description": "Классические брюки",
+      "price": 8900,
+      "image": "",
+      "category": "pants"
+    },
+    {
+      "id": 3,
+      "name": "Summer Blouse",
+      "description": "Легкая блузка",
+      "price": 5900,
+      "image": "",
+      "category": "tops"
+    },
+    {
+      "id": 4,
+      "name": "Business Suit",
+      "description": "Деловой костюм",
+      "price": 23900,
+      "image": "",
+      "category": "suits"
+    },
+    {
+      "id": 5,
+      "name": "Casual Jeans",
+      "description": "Джинсы классического кроя",
+      "price": 7900,
+      "image": "",
+      "category": "pants"
+    },
+    {
+      "id": 6,
+      "name": "Silk Skirt",
+      "description": "Шелковая юбка миди",
+      "price": 9900,
+      "image": "",
+      "category": "skirts"
+    }
+  ]
+}
