@@ -514,10 +514,10 @@
             <div class="container content-wrapper">
                 <div class="feedback-form">
                     <h2 class="text-center text-white mb-4" style="font-family: 'Mrs Saint Delafield', cursive; font-size: 3.5rem;">Feedback</h2>
-                    <form action="https://www.bing.com/search?" id="FeedbackForm" name="FeedbackForm" target="_blank">
+                   <form action="https://www.bing.com/search" method="get" id="FeedbackForm" name="FeedbackForm" target="_blank">
                         <div class="form-group mb-4">
                             <label for="name" class="form-label">Имя</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Введите ваше имя" required>
+                            <input type="text" class="form-control" id="name" name="q" placeholder="Введите ваше имя" required>
                         </div>
                         <div class="form-group mb-4">
                             <label for="email" class="form-label">Email</label>
@@ -552,9 +552,8 @@
                             <label for="feedback" class="form-label">Отзыв</label>
                             <textarea class="form-control" id="feedback" name="feedback" rows="4" placeholder="Напишите ваш отзыв" required></textarea>
                         </div>
-                        <input type="hidden" name="function" value="page">
+                        <input type="hidden" name="form" value="feedback">
                         <input type="hidden" name="page_id" value="3">
-                        <input type="hidden" name="q" value="feedback">
                         <div class="text-center">
                             <button type="submit" class="btn btn-submit">Отправить</button>
                         </div>
